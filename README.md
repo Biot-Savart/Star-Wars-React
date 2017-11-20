@@ -1,6 +1,7 @@
 ## Table of Contents
 
 - [Available Scripts](#available-scripts)
+  - [npm sinstall](#npm-install)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
@@ -9,6 +10,10 @@
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm start`
+
+Install all required libraries.
 
 ### `npm start`
 
