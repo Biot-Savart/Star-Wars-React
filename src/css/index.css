@@ -1,10 +1,18 @@
+@font-face {
+    font-family: starWarsFont;
+    src: url(fonts/STARWARS.woff);
+    font-weight:normal;
+    font-style:normal;
+}
+
 body {
   background-color: #FCFCFC;
   padding: 20px;
   margin: 0;
+  
 }
-h1, h2, p, ul, li {
-  font-family: sans-serif;
+h1, h2, h3 {
+  font-family: starWarsFont;
 }
 ul.header li {
   display: inline;
@@ -24,7 +32,7 @@ ul.header li a {
 }
 .content {
   background-color: #FFF;
-  padding: 20px;
+  padding: 20px;  
 }
 .content h2 {
   padding: 0;
