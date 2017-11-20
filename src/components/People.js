@@ -5,7 +5,7 @@ import Planet from "./Planet";
 class People extends Component {
 	constructor() {
   		super();
- 		this.state={items:[]};
+ 		this.state={items:[], searching: false};
  		this.page = 1;
     this.search = "";
     this.searchInterval = null;
@@ -39,28 +39,31 @@ class People extends Component {
     }
   }
   handleSearchClick() {
+    this.setState({searching: true});
     clearInterval(this.searchInterval);
   	this.page = 1;
     fetch(`https://swapi.co/api/people/?search=` + this.search)
  			.then(result=>result.json())
-    		.then(items=>this.setState({items}));
+    		.then(items=>{
+          this.setState({items, searching: false});          
+        });
   }
   handleChange(e) {  
   		this.search = e.target.value;
       clearInterval(this.searchInterval);
-      this.searchInterval = setInterval(this.handleSearchClick.bind(this), 500);
+      this.searchInterval = setInterval(this.handleSearchClick.bind(this), 500);      
   }
   render() {
     return (
       <div>
-        <h2>People</h2>
-
+        <h2>People</h2>        
         <div className="row">
         	<div className="col-lg-4">
 				<div className="input-group">
 					<input type="text" className="form-control" placeholder="Search by name..." onChange={this.handleChange}/>
 					<span className="input-group-btn">
-						<button className="btn btn-primary" type="button" onClick={this.handleSearchClick}><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+						{this.state.searching === false ? <button className="btn btn-primary" type="button" onClick={this.handleSearchClick}><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            : <button class="btn btn-primary disabled"><i class="glyphicon glyphicon-refresh gly-spin"></i></button>}
 					</span>
 				</div>
 			</div>
@@ -83,6 +86,8 @@ class People extends Component {
         </p>       
        
       </div>
+
+
 
 
     );

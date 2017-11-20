@@ -20,14 +20,11 @@ constructor(props) {
   onCloseModal = () => {
     this.setState({ open: false });
   }
-  componentDidMount(){
-  	
-  }  
   render() {
   	const { open } = this.state;
     return (
       <div>      	
-        <button onClick={this.onOpenModal}>View Detail</button>
+        <a onClick={this.onOpenModal}>View Detail</a>
         <Modal open={open} onClose={this.onCloseModal} little>
 	        <h2 class="planetHeading bg-primary">PLANET INFORMATION</h2>
 	        <p>     
