@@ -1,7 +1,7 @@
 ## Table of Contents
 
 - [Available Scripts](#available-scripts)
-  - [npm sinstall](#npm-install)
+  - [npm install](#npm-install)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
