@@ -1,11 +1,17 @@
 ## Table of Contents
 
+- [About](#about)
+
 - [Available Scripts](#available-scripts)
   - [npm install](#npm-install)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
+
+## About
+
+Simple web application using React to display some of the data from the SWAPI (The Star Wars) API (https://swapi.co/).
 
 ## Available Scripts
 
