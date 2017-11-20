@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
  
 class Planet extends Component {
 constructor(props) {

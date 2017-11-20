@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Moment from "react-moment";
 import Planet from "./Planet";
  
 class People extends Component {
@@ -16,7 +17,7 @@ class People extends Component {
  		this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
-  	fetch(`https://swapi.co/api/people`)
+  	fetch("https://swapi.co/api/people")
  		.then(result=>result.json())
     	.then(items=>this.setState({items}));    
   }
@@ -24,7 +25,7 @@ class People extends Component {
   	if (this.state.items.next != null)
   	{
   		this.page = this.page + 1;
-    	fetch(`https://swapi.co/api/people/?page=` + this.page)
+    	fetch("https://swapi.co/api/people/?page=" + this.page)
  			.then(result=>result.json())
     		.then(items=>this.setState({items}));
     }
@@ -33,7 +34,7 @@ class People extends Component {
   	if (this.state.items.previous != null)
   	{
   		this.page = this.page - 1;
-    	fetch(`https://swapi.co/api/people/?page=` + this.page)
+    	fetch("https://swapi.co/api/people/?page=" + this.page)
  			.then(result=>result.json())
     		.then(items=>this.setState({items}));
     }
@@ -42,7 +43,7 @@ class People extends Component {
     this.setState({searching: true});
     clearInterval(this.searchInterval);
   	this.page = 1;
-    fetch(`https://swapi.co/api/people/?search=` + this.search)
+    fetch("https://swapi.co/api/people/?search=" + this.search)
  			.then(result=>result.json())
     		.then(items=>{
           this.setState({items, searching: false});          
@@ -56,7 +57,7 @@ class People extends Component {
   render() {
     return (
       <div>
-        <h2>People</h2>        
+        <h2>Characters</h2>        
         <div className="row">
         	<div className="col-lg-4">
 				<div className="input-group">
@@ -74,7 +75,7 @@ class People extends Component {
         		<tr><th>Name</th><th>Height</th><th>Mass</th><th>Created</th><th>Edited</th><th>Planet</th></tr>        	
        
           {this.state.items.results ?
-          	this.state.items.results.map(item=><tr key={item.url.substring(28,item.url.length - 1)}><td>{item.name}</td><td>{item.height}</td><td>{item.mass}</td><td>{item.created}</td><td>{item.edited}</td><td><Planet planet={item.homeworld}/></td></tr>) 
+          	this.state.items.results.map(item=><tr key={item.url.substring(28,item.url.length - 1)}><td>{item.name}</td><td>{item.height}</td><td>{item.mass}</td><td><Moment format="YYYY/MM/DD HH:mm">{item.created}</Moment></td><td><Moment format="YYYY/MM/DD HH:mm">{item.edited}</Moment></td><td><Planet planet={item.homeworld}/></td></tr>) 
             : <tr><td colSpan="6">Loading...</td></tr>
           }
       	</tbody>
