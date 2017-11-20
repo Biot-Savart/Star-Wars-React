@@ -12,7 +12,8 @@ body {
   
 }
 h1, h2, h3 {
-  font-family: starWarsFont; 
+  font-family: starWarsFont;
+  text-transform: uppercase;
 }
 ul.header li {
   display: inline;
@@ -58,4 +59,14 @@ ul.header li a {
 
 .pageing button {
 	margin:  5px;
+}
+
+.planetHeading {
+  width: 400px;
+  padding: 6px 5px 5px 11px;
+  margin-top: 40px;  
+}
+
+.planetTable td {
+    width: 50%;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Planet from "./Planet";
  
 class People extends Component {
 	constructor() {
@@ -17,7 +18,7 @@ class People extends Component {
   componentDidMount(){
   	fetch(`https://swapi.co/api/people`)
  		.then(result=>result.json())
-    	.then(items=>this.setState({items}));
+    	.then(items=>this.setState({items}));    
   }
   handleNextClick() {
   	if (this.state.items.next != null)
@@ -70,7 +71,7 @@ class People extends Component {
         		<tr><th>Name</th><th>Height</th><th>Mass</th><th>Created</th><th>Edited</th><th>Planet</th></tr>        	
        
           {this.state.items.results ?
-          	this.state.items.results.map(item=><tr key={item.url.substring(28,item.url.length - 1)}><td>{item.name}</td><td>{item.height}</td><td>{item.mass}</td><td>{item.created}</td><td>{item.edited}</td><td>{item.homeworld}</td></tr>) 
+          	this.state.items.results.map(item=><tr key={item.url.substring(28,item.url.length - 1)}><td>{item.name}</td><td>{item.height}</td><td>{item.mass}</td><td>{item.created}</td><td>{item.edited}</td><td><Planet planet={item.homeworld}/></td></tr>) 
             : <tr><td colSpan="6">Loading...</td></tr>
           }
       	</tbody>
@@ -79,7 +80,7 @@ class People extends Component {
        	<p className="pageing">
        		<button type="button" className="btn btn-primary btn-xs" onClick={this.handlePreviousClick}>Previous</button> 
         	<button type="button" className="btn btn-primary btn-xs" onClick={this.handleNextClick}>Next</button>
-        </p>
+        </p>       
        
       </div>
 
