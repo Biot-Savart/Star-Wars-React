@@ -12,7 +12,7 @@ body {
   
 }
 h1, h2, h3 {
-  font-family: starWarsFont;
+  font-family: starWarsFont; 
 }
 ul.header li {
   display: inline;
@@ -36,7 +36,7 @@ ul.header li a {
 }
 .content h2 {
   padding: 0;
-  margin: 0;
+  margin-top: 0;
 }
 .content li {
   margin-bottom: 10px;
@@ -48,6 +48,7 @@ ul.header li a {
 .peopleTable {
 	width: 100%;
 	border-collapse: collapse;
+  margin-top: 10px;
 }
 
 .pageing {

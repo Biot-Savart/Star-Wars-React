@@ -6,11 +6,13 @@ class People extends Component {
   		super();
  		this.state={items:[]};
  		this.page = 1;
+    this.search = "";
+    this.searchInterval = null;
 
  		this.handleNextClick = this.handleNextClick.bind(this);
  		this.handlePreviousClick = this.handlePreviousClick.bind(this);
  		this.handleSearchClick = this.handleSearchClick.bind(this);
- 		this.handleChangeClick = this.handleChangeClick.bind(this);
+ 		this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
   	fetch(`https://swapi.co/api/people`)
@@ -35,15 +37,17 @@ class People extends Component {
     		.then(items=>this.setState({items}));
     }
   }
-  handleSearchClick() {  
-  		this.page = 1;
-    	fetch(`https://swapi.co/api/people/?search=`)
+  handleSearchClick() {
+    clearInterval(this.searchInterval);
+  	this.page = 1;
+    fetch(`https://swapi.co/api/people/?search=` + this.search)
  			.then(result=>result.json())
     		.then(items=>this.setState({items}));
   }
-  handleChangeClick(e, t) {  
-  		console.log("changed");
-  		debugger;
+  handleChange(e) {  
+  		this.search = e.target.value;
+      clearInterval(this.searchInterval);
+      this.searchInterval = setInterval(this.handleSearchClick.bind(this), 500);
   }
   render() {
     return (
@@ -53,7 +57,7 @@ class People extends Component {
         <div className="row">
         	<div className="col-lg-4">
 				<div className="input-group">
-					<input type="text" className="form-control" placeholder="Search for..." onChange={this.handleChangeClick}/>
+					<input type="text" className="form-control" placeholder="Search by name..." onChange={this.handleChange}/>
 					<span className="input-group-btn">
 						<button className="btn btn-primary" type="button" onClick={this.handleSearchClick}><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 					</span>
