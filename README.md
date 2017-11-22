@@ -13,6 +13,8 @@
 
 Simple web application using React to display some of the data from the SWAPI (The Star Wars) API (https://swapi.co/).
 
+The web application can be viewd at: https://biot-savart.github.io/Star-Wars-React/
+
 ## Available Scripts
 
 In the project directory, you can run:
