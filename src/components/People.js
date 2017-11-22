@@ -24,19 +24,21 @@ class People extends Component {
   handleNextClick() {
   	if (this.state.items.next != null)
   	{
+      this.setState({searching: true});
   		this.page = this.page + 1;
     	fetch("https://swapi.co/api/people/?page=" + this.page)
  			.then(result=>result.json())
-    		.then(items=>this.setState({items}));
+    		.then(items=>this.setState({items, searching: false}));
     }
   }
   handlePreviousClick() {
   	if (this.state.items.previous != null)
   	{
+      this.setState({searching: true});
   		this.page = this.page - 1;
     	fetch("https://swapi.co/api/people/?page=" + this.page)
  			.then(result=>result.json())
-    		.then(items=>this.setState({items}));
+    		.then(items=>this.setState({items, searching: false}));
     }
   }
   handleSearchClick() {
